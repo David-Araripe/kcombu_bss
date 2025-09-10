@@ -56,7 +56,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           activate-environment: sire_build
           miniforge-version: latest
-          miniforge-variant: Mambaforge
+          miniforge-variant: Miniforge3
           use-mamba: true
 #
       - name: Clone the devel branch (push to devel)
