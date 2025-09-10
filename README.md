@@ -35,4 +35,3 @@ This fork is not endorsed or supported by the original authors. It has been
 made under the terms of the three-clause BSD license specifically to make
 the `fkcombu` program easier to install via conda, so that it can be
 used as part of [BioSimSpace](https://biosimspace.org).
-
