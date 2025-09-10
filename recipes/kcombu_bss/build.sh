@@ -4,7 +4,7 @@
 
 mkdir build
 cd build
-cmake ../src
+cmake -DCMAKE_BUILD_TYPE=Release ../src
 cmake --build . --config Release
 cmake --install .
 cd -

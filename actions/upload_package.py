@@ -25,11 +25,12 @@ else:
 
 print(f"conda_bld = {conda_bld}")
 
-# Find the packages to upload
+# Find the packages to upload (both .tar.bz2 and .conda formats)
 kcombu_pkg = glob.glob(os.path.join(conda_bld, "*-*", "kcombu*.tar.bz2"))
+kcombu_pkg += glob.glob(os.path.join(conda_bld, "*-*", "kcombu*.conda"))
 
 if len(kcombu_pkg) == 0:
-    print("No sire packages to upload?")
+    print("No kcombu packages to upload?")
     sys.exit(-1)
 
 packages = kcombu_pkg
@@ -47,8 +48,8 @@ def run_cmd(cmd):
 print(f"\nLabelling with 'main' and 'dev'.")
 label = "--label main --label dev"
 
-# Upload the packages to the michellab channel on Anaconda Cloud.
-cmd = f"anaconda --token {conda_token} upload --user michellab {label} --force {packages}"
+# Upload the packages to my channel on Anaconda Cloud.
+cmd = f"anaconda --token {conda_token} upload --user davidararipe {label} --force {packages}"
 
 print(f"\nUpload command:\n\n{cmd}\n")
 

@@ -1,10 +1,10 @@
 
 
-cmake_minimum_required(VERSION 3.00)
+cmake_minimum_required(VERSION 3.5)
 
 project(KCOMBU_BSS C)
 
-set(CMAKE_C_FLAGS ${CMAKE_C_FLAGS_RELEASE})
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS_RELEASE} -Wno-deprecated-non-prototype -Wno-implicit-int")
 
 add_definitions("-D_USE_MATH_DEFINES")
 
@@ -92,26 +92,26 @@ set(PROPSEARCH_SOURCES
     propsearch.c
 )
 
-add_executable(ckcombu_bss ${CKCOMBU_SOURCES})
-add_executable(dkcombu_bss ${DKCOMBU_SOURCES})
-add_executable(fkcombu_bss ${FKCOMBU_SOURCES})
-add_executable(lkcombu_bss ${LKCOMBU_SOURCES})
-add_executable(pkcombu_bss ${PKCOMBU_SOURCES})
-add_executable(smicomp_bss ${SMICOMP_SOURCES})
-add_executable(treeun_bss ${TREEUN_SOURCES})
-add_executable(propsearch_bss ${PROPSEARCH_SOURCES})
+add_executable(ckcombu ${CKCOMBU_SOURCES})
+add_executable(dkcombu ${DKCOMBU_SOURCES})
+add_executable(fkcombu ${FKCOMBU_SOURCES})
+add_executable(lkcombu ${LKCOMBU_SOURCES})
+add_executable(pkcombu ${PKCOMBU_SOURCES})
+add_executable(smicomp ${SMICOMP_SOURCES})
+add_executable(treeun ${TREEUN_SOURCES})
+add_executable(propsearch ${PROPSEARCH_SOURCES})
 
 if (WIN32)
   message(STATUS "Not linking to the math library")
 else()
-  target_link_libraries(ckcombu_bss m)
-  target_link_libraries(dkcombu_bss m)
-  target_link_libraries(fkcombu_bss m)
-  target_link_libraries(lkcombu_bss m)
-  target_link_libraries(pkcombu_bss m)
-  target_link_libraries(smicomp_bss m)
-  target_link_libraries(treeun_bss m)
-  target_link_libraries(propsearch_bss m)
+  target_link_libraries(ckcombu m)
+  target_link_libraries(dkcombu m)
+  target_link_libraries(fkcombu m)
+  target_link_libraries(lkcombu m)
+  target_link_libraries(pkcombu m)
+  target_link_libraries(smicomp m)
+  target_link_libraries(treeun m)
+  target_link_libraries(propsearch m)
 endif()
 
 # Set the installation path automatically if this is a conda build
@@ -135,7 +135,7 @@ else()
 endif()
 
 # installation
-install(TARGETS ckcombu_bss dkcombu_bss fkcombu_bss
-                lkcombu_bss pkcombu_bss
-                smicomp_bss treeun_bss propsearch_bss
+install(TARGETS ckcombu dkcombu fkcombu
+                lkcombu pkcombu
+                smicomp treeun propsearch
         RUNTIME DESTINATION "${KCOMBU_BINDIR}")
