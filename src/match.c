@@ -1071,12 +1071,8 @@ void add_hydrogen_pairs_to_MATCH(Mlist,mA,mB)
     if (Npair_new > m->Npair){ 
       free(m->anumA);
       free(m->anumB);
-/*
-      m->anumA = (unsigned char *)malloc(sizeof(unsigned char)*Npair_new);
-      m->anumB = (unsigned char *)malloc(sizeof(unsigned char)*Npair_new);
- */
-      m->anumA = (int *)malloc(sizeof(unsigned char)*Npair_new);
-      m->anumB = (int *)malloc(sizeof(unsigned char)*Npair_new);
+      m->anumA = (int *)malloc(sizeof(int)*Npair_new);
+      m->anumB = (int *)malloc(sizeof(int)*Npair_new);
       for (i=0;i<Npair_new;++i){ 
         m->anumA[i] = anumA_new[i]; 
         m->anumB[i] = anumB_new[i];
