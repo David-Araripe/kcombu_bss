@@ -5,7 +5,9 @@ cmake_minimum_required(VERSION 3.5)
 project(KCOMBU_BSS C)
 
 set(CMAKE_C_STANDARD 17)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS_RELEASE} -Wno-deprecated-non-prototype -Wno-implicit-int")
+if(NOT MSVC)
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-deprecated-non-prototype -Wno-implicit-int")
+endif()
 
 add_definitions("-D_USE_MATH_DEFINES")
 
